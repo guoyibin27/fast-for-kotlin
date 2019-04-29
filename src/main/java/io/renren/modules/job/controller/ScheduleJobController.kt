@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.*
  */
 @RestController
 @RequestMapping("/sys/schedule")
-class ScheduleJobController {
+ class ScheduleJobController {
 
     @Autowired
     lateinit var scheduleJobService: ScheduleJobService
@@ -35,7 +35,7 @@ class ScheduleJobController {
      */
     @RequestMapping("/list")
     @RequiresPermissions("sys:schedule:list")
-    fun list(@RequestParam params: Map<String, Any>): R {
+    fun list(@RequestParam params: MutableMap<String, Any>): R {
         val page = scheduleJobService.queryPage(params)
         return R.ok().put("page", page)
     }

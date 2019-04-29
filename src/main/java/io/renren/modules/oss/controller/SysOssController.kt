@@ -46,7 +46,7 @@ class SysOssController {
      */
     @GetMapping("/list")
     @RequiresPermissions("sys:oss:all")
-    fun list(@RequestParam params: Map<String, Any>): R {
+    fun list(@RequestParam params: MutableMap<String, Any>): R {
         val page = sysOssService.queryPage(params)
         return R.ok().put("page", page)
     }

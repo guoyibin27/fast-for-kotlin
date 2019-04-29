@@ -432,7 +432,7 @@ class HTMLFilter {
                 val one = m.group(1) //(>|^)
                 val two = m.group(2) //([^<]+?)
                 val three = m.group(3) //(<|$)
-                m.appendReplacement(buf, Matcher.quoteReplacement((one.toInt() + regexReplace(P_QUOTE, "&quot;", two).toInt() + three.toInt()).toString()))
+                m.appendReplacement(buf, Matcher.quoteReplacement((one + regexReplace(P_QUOTE, "&quot;", two) + three)))
             }
             m.appendTail(buf)
             return buf.toString()

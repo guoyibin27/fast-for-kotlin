@@ -25,10 +25,10 @@ import com.google.common.collect.Lists.newArrayList
 
 @Configuration
 @EnableSwagger2
-open class SwaggerConfig : WebMvcConfigurer {
+ class SwaggerConfig : WebMvcConfigurer {
 
     @Bean
-    open fun createRestApi(): Docket {
+     fun createRestApi(): Docket {
         return Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()

@@ -22,10 +22,10 @@ import java.util.Properties
  * @author Mark sunlightcs@gmail.com
  */
 @Configuration
-open class KaptchaConfig {
+ class KaptchaConfig {
 
     @Bean
-    open fun producer(): DefaultKaptcha {
+     fun producer(): DefaultKaptcha {
         val properties = Properties()
         properties["kaptcha.border"] = "no"
         properties["kaptcha.textproducer.font.color"] = "black"

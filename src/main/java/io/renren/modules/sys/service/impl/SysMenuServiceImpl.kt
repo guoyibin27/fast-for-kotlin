@@ -24,7 +24,7 @@ import java.util.ArrayList
 
 
 @Service("sysMenuService")
-open class SysMenuServiceImpl : ServiceImpl<SysMenuDao, SysMenuEntity>(), SysMenuService {
+ class SysMenuServiceImpl : ServiceImpl<SysMenuDao, SysMenuEntity>(), SysMenuService {
 
     @Autowired
     lateinit var sysUserService: SysUserService

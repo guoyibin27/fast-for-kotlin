@@ -28,7 +28,7 @@ import org.springframework.transaction.annotation.Transactional
 import java.util.Arrays
 
 @Service("sysConfigService")
-open class SysConfigServiceImpl : ServiceImpl<SysConfigDao, SysConfigEntity>(), SysConfigService {
+ class SysConfigServiceImpl : ServiceImpl<SysConfigDao, SysConfigEntity>(), SysConfigService {
     @Autowired
     private val sysConfigRedis: SysConfigRedis? = null
 

@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service
  * @author Mark sunlightcs@gmail.com
  */
 @Service("sysUserRoleService")
-class SysUserRoleServiceImpl : ServiceImpl<SysUserRoleDao, SysUserRoleEntity>(), SysUserRoleService {
+ class SysUserRoleServiceImpl : ServiceImpl<SysUserRoleDao, SysUserRoleEntity>(), SysUserRoleService {
 
     @Override
     override fun saveOrUpdate(userId: Long, roleIdList: List<Long>?) {

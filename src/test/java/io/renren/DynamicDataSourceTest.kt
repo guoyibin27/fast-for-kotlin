@@ -24,13 +24,13 @@ import org.springframework.test.context.junit4.SpringRunner
 @SpringBootTest
 class DynamicDataSourceTest {
     @Autowired
-    private val dynamicDataSourceTestService: DynamicDataSourceTestService? = null
+    lateinit var dynamicDataSourceTestService: DynamicDataSourceTestService
 
     @Test
     fun test() {
         val id = 1L
 
-        dynamicDataSourceTestService!!.updateUser(id)
+        dynamicDataSourceTestService.updateUser(id)
         dynamicDataSourceTestService.updateUserBySlave1(id)
         dynamicDataSourceTestService.updateUserBySlave2(id)
     }

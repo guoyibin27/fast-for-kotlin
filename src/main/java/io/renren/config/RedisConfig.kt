@@ -21,12 +21,12 @@ import org.springframework.data.redis.serializer.StringRedisSerializer
  * @author Mark sunlightcs@gmail.com
  */
 @Configuration
-open class RedisConfig {
+ class RedisConfig {
     @Autowired
     lateinit var factory: RedisConnectionFactory
 
     @Bean
-    open fun redisTemplate(): RedisTemplate<String, Any> {
+     fun redisTemplate(): RedisTemplate<String, Any> {
         val redisTemplate = RedisTemplate<String, Any>()
         redisTemplate.keySerializer = StringRedisSerializer()
         redisTemplate.hashKeySerializer = StringRedisSerializer()
@@ -37,27 +37,27 @@ open class RedisConfig {
     }
 
     @Bean
-    open fun hashOperations(redisTemplate: RedisTemplate<String, Any>): HashOperations<String, String, Any> {
+     fun hashOperations(redisTemplate: RedisTemplate<String, Any>): HashOperations<String, String, Any> {
         return redisTemplate.opsForHash<String, Any>()
     }
 
     @Bean
-    open fun valueOperations(redisTemplate: RedisTemplate<String, String>): ValueOperations<String, String> {
+     fun valueOperations(redisTemplate: RedisTemplate<String, String>): ValueOperations<String, String> {
         return redisTemplate.opsForValue()
     }
 
     @Bean
-    open fun listOperations(redisTemplate: RedisTemplate<String, Any>): ListOperations<String, Any> {
+     fun listOperations(redisTemplate: RedisTemplate<String, Any>): ListOperations<String, Any> {
         return redisTemplate.opsForList()
     }
 
     @Bean
-    open fun setOperations(redisTemplate: RedisTemplate<String, Any>): SetOperations<String, Any> {
+     fun setOperations(redisTemplate: RedisTemplate<String, Any>): SetOperations<String, Any> {
         return redisTemplate.opsForSet()
     }
 
     @Bean
-    open fun zSetOperations(redisTemplate: RedisTemplate<String, Any>): ZSetOperations<String, Any> {
+     fun zSetOperations(redisTemplate: RedisTemplate<String, Any>): ZSetOperations<String, Any> {
         return redisTemplate.opsForZSet()
     }
 }

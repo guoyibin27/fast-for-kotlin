@@ -11,12 +11,13 @@ import org.springframework.test.context.junit4.SpringRunner
 @RunWith(SpringRunner::class)
 @SpringBootTest
 class JwtTest {
+
     @Autowired
-    private val jwtUtils: JwtUtils? = null
+    lateinit var jwtUtils: JwtUtils
 
     @Test
     fun test() {
-        val token = jwtUtils!!.generateToken(1)
+        val token = jwtUtils.generateToken(1)
 
         System.out.println(token)
     }

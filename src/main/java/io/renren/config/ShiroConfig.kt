@@ -25,10 +25,10 @@ import javax.servlet.Filter
  * @author Mark sunlightcs@gmail.com
  */
 @Configuration
-open class ShiroConfig {
+ class ShiroConfig {
 
     @Bean("securityManager")
-    open fun securityManager(oAuth2Realm: OAuth2Realm): SecurityManager {
+     fun securityManager(oAuth2Realm: OAuth2Realm): SecurityManager {
         val securityManager = DefaultWebSecurityManager()
         securityManager.setRealm(oAuth2Realm)
         securityManager.rememberMeManager = null
@@ -36,7 +36,7 @@ open class ShiroConfig {
     }
 
     @Bean("shiroFilter")
-    open fun shirFilter(securityManager: SecurityManager): ShiroFilterFactoryBean {
+     fun shirFilter(securityManager: SecurityManager): ShiroFilterFactoryBean {
         val shiroFilter = ShiroFilterFactoryBean()
         shiroFilter.securityManager = securityManager
 
@@ -63,12 +63,12 @@ open class ShiroConfig {
     }
 
     @Bean("lifecycleBeanPostProcessor")
-    open fun lifecycleBeanPostProcessor(): LifecycleBeanPostProcessor {
+     fun lifecycleBeanPostProcessor(): LifecycleBeanPostProcessor {
         return LifecycleBeanPostProcessor()
     }
 
     @Bean
-    open fun authorizationAttributeSourceAdvisor(securityManager: SecurityManager): AuthorizationAttributeSourceAdvisor {
+     fun authorizationAttributeSourceAdvisor(securityManager: SecurityManager): AuthorizationAttributeSourceAdvisor {
         val advisor = AuthorizationAttributeSourceAdvisor()
         advisor.securityManager = securityManager
         return advisor

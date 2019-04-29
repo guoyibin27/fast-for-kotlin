@@ -29,9 +29,10 @@ import javax.annotation.PostConstruct
 import java.util.*
 
 @Service("scheduleJobService")
-class ScheduleJobServiceImpl : ServiceImpl<ScheduleJobDao, ScheduleJobEntity>(), ScheduleJobService {
+ class ScheduleJobServiceImpl : ServiceImpl<ScheduleJobDao, ScheduleJobEntity>(), ScheduleJobService {
+
     @Autowired
-    private val scheduler: Scheduler? = null
+    lateinit var scheduler: Scheduler
 
     /**
      * 项目启动时，初始化定时器
@@ -40,7 +41,7 @@ class ScheduleJobServiceImpl : ServiceImpl<ScheduleJobDao, ScheduleJobEntity>(),
     fun init() {
         val scheduleJobList = this.list()
         for (scheduleJob in scheduleJobList) {
-            val cronTrigger = ScheduleUtils.getCronTrigger(scheduler!!, scheduleJob.getJobId())
+            val cronTrigger = ScheduleUtils.getCronTrigger(scheduler, scheduleJob.jobId!!)
             //如果不存在，则创建
             if (cronTrigger == null) {
                 ScheduleUtils.createScheduleJob(scheduler, scheduleJob)
@@ -51,7 +52,7 @@ class ScheduleJobServiceImpl : ServiceImpl<ScheduleJobDao, ScheduleJobEntity>(),
     }
 
     @Override
-    override fun queryPage(params: Map<String, Any>): PageUtils {
+    override fun queryPage(params: MutableMap<String, Any>): PageUtils {
         val beanName = params["beanName"] as String
 
         val page = this.page(
@@ -66,11 +67,11 @@ class ScheduleJobServiceImpl : ServiceImpl<ScheduleJobDao, ScheduleJobEntity>(),
     @Override
     @Transactional(rollbackFor = [Exception::class])
     override fun saveJob(scheduleJob: ScheduleJobEntity) {
-        scheduleJob.setCreateTime(Date())
-        scheduleJob.setStatus(Constant.ScheduleStatus.NORMAL.value)
+        scheduleJob.createTime = Date()
+        scheduleJob.status = Constant.ScheduleStatus.NORMAL.value
         this.save(scheduleJob)
 
-        ScheduleUtils.createScheduleJob(scheduler!!, scheduleJob)
+        ScheduleUtils.createScheduleJob(scheduler, scheduleJob)
     }
 
     @Override
@@ -85,7 +86,7 @@ class ScheduleJobServiceImpl : ServiceImpl<ScheduleJobDao, ScheduleJobEntity>(),
     @Transactional(rollbackFor = [Exception::class])
     override fun deleteBatch(jobIds: Array<Long>) {
         for (jobId in jobIds) {
-            ScheduleUtils.deleteScheduleJob(scheduler!!, jobId)
+            ScheduleUtils.deleteScheduleJob(scheduler, jobId)
         }
 
         //删除数据
@@ -94,9 +95,9 @@ class ScheduleJobServiceImpl : ServiceImpl<ScheduleJobDao, ScheduleJobEntity>(),
 
     @Override
     override fun updateBatch(jobIds: Array<Long>, status: Int): Int {
-        val map = HashMap(2)
-        map.put("list", jobIds)
-        map.put("status", status)
+        val map = HashMap<String, Any>(2)
+        map["list"] = jobIds
+        map["status"] = status
         return baseMapper.updateBatch(map)
     }
 
@@ -104,7 +105,7 @@ class ScheduleJobServiceImpl : ServiceImpl<ScheduleJobDao, ScheduleJobEntity>(),
     @Transactional(rollbackFor = [Exception::class])
     override fun run(jobIds: Array<Long>) {
         for (jobId in jobIds) {
-            ScheduleUtils.run(scheduler!!, this.getById(jobId))
+            ScheduleUtils.run(scheduler, this.getById(jobId))
         }
     }
 
@@ -112,7 +113,7 @@ class ScheduleJobServiceImpl : ServiceImpl<ScheduleJobDao, ScheduleJobEntity>(),
     @Transactional(rollbackFor = [Exception::class])
     override fun pause(jobIds: Array<Long>) {
         for (jobId in jobIds) {
-            ScheduleUtils.pauseJob(scheduler!!, jobId)
+            ScheduleUtils.pauseJob(scheduler, jobId)
         }
 
         updateBatch(jobIds, Constant.ScheduleStatus.PAUSE.value)
@@ -122,7 +123,7 @@ class ScheduleJobServiceImpl : ServiceImpl<ScheduleJobDao, ScheduleJobEntity>(),
     @Transactional(rollbackFor = [Exception::class])
     override fun resume(jobIds: Array<Long>) {
         for (jobId in jobIds) {
-            ScheduleUtils.resumeJob(scheduler!!, jobId)
+            ScheduleUtils.resumeJob(scheduler, jobId)
         }
 
         updateBatch(jobIds, Constant.ScheduleStatus.NORMAL.value)

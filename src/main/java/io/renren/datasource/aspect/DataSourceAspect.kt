@@ -51,9 +51,7 @@ class DataSourceAspect {
         val targetDataSource = targetClass.getAnnotation(DataSource::class.java) as DataSource
         val methodDataSource = method.getAnnotation(DataSource::class.java)
         if (methodDataSource != null) {
-            val value: String
-            value = methodDataSource.value
-
+            val value = methodDataSource.value
             DynamicContextHolder.push(value)
             logger.debug("set datasource is {}", value)
         }

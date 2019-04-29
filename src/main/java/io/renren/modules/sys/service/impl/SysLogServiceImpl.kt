@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service
 
 
 @Service("sysLogService")
-class SysLogServiceImpl : ServiceImpl<SysLogDao, SysLogEntity>(), SysLogService {
+ class SysLogServiceImpl : ServiceImpl<SysLogDao, SysLogEntity>(), SysLogService {
 
     @Override
     override fun queryPage(params: MutableMap<String, Any>): PageUtils {

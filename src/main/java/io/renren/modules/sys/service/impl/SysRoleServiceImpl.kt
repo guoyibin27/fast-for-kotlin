@@ -32,7 +32,7 @@ import java.util.*
  * @author Mark sunlightcs@gmail.com
  */
 @Service("sysRoleService")
-open class SysRoleServiceImpl : ServiceImpl<SysRoleDao, SysRoleEntity>(), SysRoleService {
+ class SysRoleServiceImpl : ServiceImpl<SysRoleDao, SysRoleEntity>(), SysRoleService {
 
     @Autowired
     lateinit var sysRoleMenuService: SysRoleMenuService

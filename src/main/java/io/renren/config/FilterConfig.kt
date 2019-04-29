@@ -23,10 +23,10 @@ import javax.servlet.Filter
  * @author Mark sunlightcs@gmail.com
  */
 @Configuration
-open class FilterConfig {
+ class FilterConfig {
 
     @Bean
-    open fun shiroFilterRegistration(): FilterRegistrationBean<*> {
+     fun shiroFilterRegistration(): FilterRegistrationBean<*> {
         val registration = FilterRegistrationBean<Filter>()
         registration.setFilter(DelegatingFilterProxy("shiroFilter"))
         //该值缺省为false，表示生命周期由SpringApplicationContext管理，设置为true则表示由ServletContainer管理
@@ -38,7 +38,7 @@ open class FilterConfig {
     }
 
     @Bean
-    open fun xssFilterRegistration(): FilterRegistrationBean<*> {
+     fun xssFilterRegistration(): FilterRegistrationBean<*> {
         val registration = FilterRegistrationBean<Filter>()
         registration.setDispatcherTypes(DispatcherType.REQUEST)
         registration.setFilter(XssFilter())

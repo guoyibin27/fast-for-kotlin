@@ -13,7 +13,7 @@ import org.springframework.boot.runApplication
 
 
 @SpringBootApplication
-open class RenrenApplication
+ class RenrenApplication
 
 fun main(args: Array<String>) {
     runApplication<RenrenApplication>(*args)

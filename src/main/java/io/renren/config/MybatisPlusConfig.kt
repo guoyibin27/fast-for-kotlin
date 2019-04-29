@@ -20,18 +20,18 @@ import org.springframework.context.annotation.Configuration
  * @author Mark sunlightcs@gmail.com
  */
 @Configuration
-open class MybatisPlusConfig {
+ class MybatisPlusConfig {
 
     /**
      * 分页插件
      */
     @Bean
-    open fun paginationInterceptor(): PaginationInterceptor {
+     fun paginationInterceptor(): PaginationInterceptor {
         return PaginationInterceptor()
     }
 
     @Bean
-    open fun sqlInjector(): ISqlInjector {
+     fun sqlInjector(): ISqlInjector {
         return LogicSqlInjector()
     }
 }

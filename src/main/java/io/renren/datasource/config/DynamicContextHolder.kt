@@ -29,7 +29,7 @@ object DynamicContextHolder {
      *
      * @return 数据源名称ThreadLocal
      */
-    fun peek(): String {
+    fun peek(): String? {
         return CONTEXT_HOLDER.get().peek()
     }
 
@@ -52,5 +52,4 @@ object DynamicContextHolder {
             CONTEXT_HOLDER.remove()
         }
     }
-
 }

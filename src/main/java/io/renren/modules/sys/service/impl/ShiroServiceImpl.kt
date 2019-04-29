@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class ShiroServiceImpl : ShiroService {
+ class ShiroServiceImpl : ShiroService {
     @Autowired
     lateinit var sysMenuDao: SysMenuDao
     @Autowired

@@ -20,7 +20,7 @@ import java.util.Date
 
 
 @Service("sysUserTokenService")
-class SysUserTokenServiceImpl : ServiceImpl<SysUserTokenDao, SysUserTokenEntity>(), SysUserTokenService {
+ class SysUserTokenServiceImpl : ServiceImpl<SysUserTokenDao, SysUserTokenEntity>(), SysUserTokenService {
 
 
     @Override
@@ -31,7 +31,7 @@ class SysUserTokenServiceImpl : ServiceImpl<SysUserTokenDao, SysUserTokenEntity>
         //当前时间
         val now = Date()
         //过期时间
-        val expireTime = Date(now.getTime() + EXPIRE * 1000)
+        val expireTime = Date(now.time + EXPIRE * 1000)
 
         //判断是否生成过token
         var tokenEntity: SysUserTokenEntity? = this.getById(userId)

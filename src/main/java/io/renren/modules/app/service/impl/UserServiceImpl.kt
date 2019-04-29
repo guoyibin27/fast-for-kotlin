@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service
 
 
 @Service("userService")
-class UserServiceImpl : ServiceImpl<UserDao, UserEntity>(), UserService {
+ class UserServiceImpl : ServiceImpl<UserDao, UserEntity>(), UserService {
 
     @Override
     override fun queryByMobile(mobile: String): UserEntity {

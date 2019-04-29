@@ -37,7 +37,7 @@ import java.util.Date
  * @author Mark sunlightcs@gmail.com
  */
 @Service("sysUserService")
-open class SysUserServiceImpl : ServiceImpl<SysUserDao, SysUserEntity>(), SysUserService {
+ class SysUserServiceImpl : ServiceImpl<SysUserDao, SysUserEntity>(), SysUserService {
 
     @Autowired
     lateinit var sysUserRoleService: SysUserRoleService
@@ -110,7 +110,7 @@ open class SysUserServiceImpl : ServiceImpl<SysUserDao, SysUserEntity>(), SysUse
 
     @Override
     override fun deleteBatch(userId: Array<Long>) {
-        this.removeByIds(Arrays.asList(userId))
+        this.removeByIds(userId.toList())
     }
 
     @Override

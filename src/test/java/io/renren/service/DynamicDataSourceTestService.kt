@@ -21,35 +21,35 @@ import org.springframework.transaction.annotation.Transactional
  * @author Mark sunlightcs@gmail.com
  */
 @Service
-//@DataSource("slave1")
+open//@DataSource("slave1")
 class DynamicDataSourceTestService {
     @Autowired
-    private val sysUserDao: SysUserDao? = null
+    lateinit var sysUserDao: SysUserDao
 
     @Transactional
-    fun updateUser(id: Long) {
+    open fun updateUser(id: Long) {
         val user = SysUserEntity()
-        user.setUserId(id)
-        user.setMobile("13500000000")
-        sysUserDao!!.updateById(user)
+        user.userId = (id)
+        user.mobile = "13500000000"
+        sysUserDao.updateById(user)
     }
 
     @Transactional
     @DataSource("slave1")
-    fun updateUserBySlave1(id: Long) {
+    open fun updateUserBySlave1(id: Long) {
         val user = SysUserEntity()
-        user.setUserId(id)
-        user.setMobile("13500000001")
-        sysUserDao!!.updateById(user)
+        user.userId = id
+        user.mobile = "13500000001"
+        sysUserDao.updateById(user)
     }
 
     @DataSource("slave2")
     @Transactional
-    fun updateUserBySlave2(id: Long) {
+    open fun updateUserBySlave2(id: Long) {
         val user = SysUserEntity()
-        user.setUserId(id)
-        user.setMobile("13500000002")
-        sysUserDao!!.updateById(user)
+        user.userId = id
+        user.mobile = "13500000002"
+        sysUserDao.updateById(user)
 
         //测试事物
         val i = 1 / 0

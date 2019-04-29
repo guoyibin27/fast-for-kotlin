@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional
  * @author Mark sunlightcs@gmail.com
  */
 @Service("sysRoleMenuService")
-open class SysRoleMenuServiceImpl : ServiceImpl<SysRoleMenuDao, SysRoleMenuEntity>(), SysRoleMenuService {
+ class SysRoleMenuServiceImpl : ServiceImpl<SysRoleMenuDao, SysRoleMenuEntity>(), SysRoleMenuService {
 
     @Override
     @Transactional(rollbackFor = [Exception::class])

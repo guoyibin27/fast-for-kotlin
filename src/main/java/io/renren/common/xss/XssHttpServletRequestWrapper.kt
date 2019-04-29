@@ -113,7 +113,7 @@ class XssHttpServletRequestWrapper(request: HttpServletRequest) : HttpServletReq
     }
 
     @Override
-    override fun getHeader(name: String): String {
+    override fun getHeader(name: String): String? {
         var value = super.getHeader(xssEncode(name))
         if (StringUtils.isNotBlank(value)) {
             value = xssEncode(value)

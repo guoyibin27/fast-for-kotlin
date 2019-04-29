@@ -24,7 +24,7 @@ import org.springframework.context.annotation.Configuration
  */
 @Aspect
 @Configuration
-open class RedisAspect {
+ class RedisAspect {
     private val logger by lazy { LoggerFactory.getLogger(this::class.java) }
     //是否开启redis缓存  true开启   false关闭
     @Value("\${spring.redis.open: false}")

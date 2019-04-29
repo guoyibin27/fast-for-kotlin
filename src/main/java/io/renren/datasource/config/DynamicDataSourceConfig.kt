@@ -27,7 +27,7 @@ import javax.sql.DataSource
  */
 @Configuration
 @EnableConfigurationProperties(DynamicDataSourceProperties::class)
-open class DynamicDataSourceConfig {
+ class DynamicDataSourceConfig {
 
     @Autowired
     lateinit var properties: DynamicDataSourceProperties
@@ -47,12 +47,12 @@ open class DynamicDataSourceConfig {
 
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource.druid")
-    open fun dataSourceProperties(): DataSourceProperties {
+     fun dataSourceProperties(): DataSourceProperties {
         return DataSourceProperties()
     }
 
     @Bean
-    open fun dynamicDataSource(dataSourceProperties: DataSourceProperties): DynamicDataSource {
+     fun dynamicDataSource(dataSourceProperties: DataSourceProperties): DynamicDataSource {
         val dynamicDataSource = DynamicDataSource()
         dynamicDataSource.setTargetDataSources(this.dynamicDataSource)
 

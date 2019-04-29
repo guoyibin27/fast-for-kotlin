@@ -19,7 +19,7 @@ import io.renren.modules.job.entity.ScheduleJobEntity
  */
 interface ScheduleJobService : IService<ScheduleJobEntity> {
 
-    fun queryPage(params: Map<String, Any>): PageUtils
+    fun queryPage(params: MutableMap<String, Any>): PageUtils
 
     /**
      * 保存定时任务

@@ -35,7 +35,7 @@ class SysConfigController : AbstractController() {
      */
     @GetMapping("/list")
     @RequiresPermissions("sys:config:list")
-    fun list(@RequestParam params: Map<String, Any>): R {
+    fun list(@RequestParam params: MutableMap<String, Any>): R {
         val page = sysConfigService.queryPage(params)
 
         return R.ok().put("page", page)

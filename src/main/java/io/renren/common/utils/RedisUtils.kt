@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit
  * @author Mark sunlightcs@gmail.com
  */
 @Component
-class RedisUtils {
+ class RedisUtils {
     companion object {
         /**  默认过期时长，单位：秒  */
         val DEFAULT_EXPIRE = (60 * 60 * 24).toLong()

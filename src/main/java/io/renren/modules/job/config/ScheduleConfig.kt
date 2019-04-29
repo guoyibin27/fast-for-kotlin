@@ -21,10 +21,10 @@ import java.util.Properties
  * @author Mark sunlightcs@gmail.com
  */
 @Configuration
-open class ScheduleConfig {
+ class ScheduleConfig {
 
     @Bean
-    open fun schedulerFactoryBean(dataSource: DataSource): SchedulerFactoryBean {
+     fun schedulerFactoryBean(dataSource: DataSource): SchedulerFactoryBean {
         val factory = SchedulerFactoryBean()
         factory.setDataSource(dataSource)
 

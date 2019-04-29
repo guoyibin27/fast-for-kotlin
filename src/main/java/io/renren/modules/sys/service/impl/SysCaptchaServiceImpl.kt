@@ -30,7 +30,7 @@ import java.util.Date
  * @author Mark sunlightcs@gmail.com
  */
 @Service("sysCaptchaService")
-class SysCaptchaServiceImpl : ServiceImpl<SysCaptchaDao, SysCaptchaEntity>(), SysCaptchaService {
+ class SysCaptchaServiceImpl : ServiceImpl<SysCaptchaDao, SysCaptchaEntity>(), SysCaptchaService {
     @Autowired
     private val producer: Producer? = null
 

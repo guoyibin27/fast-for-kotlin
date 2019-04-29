@@ -22,7 +22,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
  * @author Mark sunlightcs@gmail.com
  */
 @Configuration
-open class WebMvcConfig : WebMvcConfigurer {
+ class WebMvcConfig : WebMvcConfigurer {
     @Autowired
     lateinit var authorizationInterceptor: AuthorizationInterceptor
     @Autowired
